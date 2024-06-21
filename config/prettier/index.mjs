@@ -8,6 +8,7 @@ const config = {
   useTabs: false,
   semi: false,
   singleQuote: true,
+  semicolon: true,
   quoteProps: 'as-needed',
   jsxSingleQuote: false,
   trailingComma: 'es5',
