@@ -48,6 +48,7 @@ model Token {
 
 enum AccountProvider {
   GITHUB
+  GOOGLE
 }
 
 model Account {
