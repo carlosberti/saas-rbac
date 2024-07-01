@@ -17,7 +17,7 @@ export async function updateMember(app: FastifyInstance) {
       '/organizations/:slug/members/:memberId',
       {
         schema: {
-          tags: ['projects'],
+          tags: ['members'],
           summary: "Update a member's role",
           security: [{ bearerAuth: [] }],
           body: z.object({

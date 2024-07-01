@@ -16,7 +16,7 @@ export async function removeMember(app: FastifyInstance) {
       '/organizations/:slug/members/:memberId',
       {
         schema: {
-          tags: ['projects'],
+          tags: ['members'],
           summary: 'Remove member from organization',
           security: [{ bearerAuth: [] }],
           params: z.object({
