@@ -44,7 +44,6 @@ export async function getInvite(app: FastifyInstance) {
       const { inviteId } = request.params
 
       const invite = await prisma.invite.findUnique({
-        where: { id: inviteId },
         select: {
           id: true,
           email: true,
@@ -63,6 +62,7 @@ export async function getInvite(app: FastifyInstance) {
             },
           },
         },
+        where: { id: inviteId },
       })
 
       if (!invite) {
