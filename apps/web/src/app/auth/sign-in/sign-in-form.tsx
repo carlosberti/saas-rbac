@@ -3,6 +3,7 @@
 import { AlertTriangle, Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import githubIcon from '@/assets/github-icon.svg'
 import googleIcon from '@/assets/google-icon.svg'
@@ -20,12 +21,15 @@ type FieldsDefinition = {
 }
 
 export function SignInForm() {
+  const router = useRouter()
   const [{ success, message, errors }, handleSubmit, isPending] =
-    useFormState<FieldsDefinition>(signInWithEmailAndPassword)
+    useFormState<FieldsDefinition>(signInWithEmailAndPassword, () =>
+      router.push('/'),
+    )
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {success === false && message && (
+      {!success && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
           <AlertTitle>Sign in failed</AlertTitle>
