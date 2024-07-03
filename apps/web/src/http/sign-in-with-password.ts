@@ -1,11 +1,11 @@
 import { api } from './api-client'
 
-interface signInWithPasswordRequest {
+type signInWithPasswordRequest = {
   email: string
   password: string
 }
 
-interface signInWithPasswordResponse {
+type signInWithPasswordResponse = {
   token: string
 }
 

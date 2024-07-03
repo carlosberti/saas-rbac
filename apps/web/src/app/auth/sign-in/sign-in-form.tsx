@@ -3,7 +3,6 @@
 import { AlertTriangle, Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { type FormEvent, useState, useTransition } from 'react'
 
 import githubIcon from '@/assets/github-icon.svg'
 import googleIcon from '@/assets/google-icon.svg'
@@ -11,44 +10,21 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
+import { useFormState } from '@/hooks/use-form-state'
 
 import { signInWithEmailAndPassword } from './actions'
 
+type FieldsDefinition = {
+  email: string
+  password: string
+}
+
 export function SignInForm() {
-  // const [{ success, message, errors }, formAction, isPending] = useActionState(
-  //   signInWithEmailAndPassword,
-  //   {
-  //     success: false,
-  //     message: null,
-  //     errors: null,
-  //   },
-  // ) use useActionState once react give us a solution to do not reset the form state on submit. Once that is available, use action prop on the form instead of onSubmit
-  const [{ success, message, errors }, setFormState] = useState<{
-    success: boolean
-    message: string | null
-    errors: Record<string, string[]> | null
-  }>({
-    success: false,
-    message: null,
-    errors: null,
-  })
-  const [isPending, startTransition] = useTransition()
-
-  async function handleSignIn(event: FormEvent<HTMLFormElement>) {
-    event?.preventDefault()
-
-    const form = event.currentTarget
-    const data = new FormData(form)
-
-    startTransition(async () => {
-      const state = await signInWithEmailAndPassword(data)
-
-      setFormState(state)
-    })
-  }
+  const [{ success, message, errors }, handleSubmit, isPending] =
+    useFormState<FieldsDefinition>(signInWithEmailAndPassword)
 
   return (
-    <form onSubmit={handleSignIn} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
