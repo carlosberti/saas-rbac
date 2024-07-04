@@ -10,7 +10,7 @@ const signInSchema = z.object({
   email: z
     .string()
     .email({ message: "Please provide a valid e-mail with '@' and domain" }),
-  password: z.string().min(12, 'Password must be at least 12 characters'),
+  password: z.string(),
 })
 
 export async function signInWithEmailAndPassword(data: FormData) {

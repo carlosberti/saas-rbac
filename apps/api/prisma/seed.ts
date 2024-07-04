@@ -8,25 +8,27 @@ async function seed() {
   await prisma.organization.deleteMany()
   await prisma.user.deleteMany()
 
+  const passwordHash = await hash('123456', 1)
+
   const [user1, user2, user3] = await prisma.user.createManyAndReturn({
     data: [
       {
         name: 'John Doe',
-        email: 'ZbGpP@example.com',
+        email: 'johan@acme.com',
         avatarUrl: 'https://github.com/johndoe.png',
-        passwordHash: await hash('1234567891234', 1),
+        passwordHash,
       },
       {
         name: faker.person.fullName(),
         email: faker.internet.email(),
         avatarUrl: faker.image.avatarGitHub(),
-        passwordHash: await hash(faker.internet.password({ length: 12 }), 1),
+        passwordHash,
       },
       {
         name: faker.person.fullName(),
         email: faker.internet.email(),
         avatarUrl: faker.image.avatarGitHub(),
-        passwordHash: await hash(faker.internet.password({ length: 12 }), 1),
+        passwordHash,
       },
     ],
   })
