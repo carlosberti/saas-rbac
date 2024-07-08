@@ -17,7 +17,9 @@ export const env = createEnv({
     GOOGLE_OAUTH_REDIRECT_URL: z.string().url(),
   },
   client: {},
-  shared: {},
+  shared: {
+    NEXT_PUBLIC_API_URL: z.string().url(),
+  },
   runtimeEnv: {
     SERVER_PORT: process.env.SERVER_PORT,
     DATABASE_URL: process.env.DATABASE_URL,
@@ -28,6 +30,7 @@ export const env = createEnv({
     GOOGLE_OAUTH_CLIENT_ID: process.env.GOOGLE_OAUTH_CLIENT_ID,
     GOOGLE_OAUTH_CLIENT_SECRET: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
     GOOGLE_OAUTH_REDIRECT_URL: process.env.GOOGLE_OAUTH_REDIRECT_URL,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
   emptyStringAsUndefined: true,
 })
