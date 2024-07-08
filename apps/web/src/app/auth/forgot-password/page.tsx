@@ -2,12 +2,13 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 export default function ForwardPasswordPage() {
   return (
     <form action="" className="space-y-4">
       <div className="space-y-1">
-        <label htmlFor="email">E-mail</label>
+        <Label htmlFor="email">E-mail</Label>
         <Input name="email" type="email" id="email" />
       </div>
 

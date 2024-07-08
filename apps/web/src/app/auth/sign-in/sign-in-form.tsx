@@ -10,6 +10,7 @@ import googleIcon from '@/assets/google-icon.svg'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useFormState } from '@/hooks/use-form-state'
 
@@ -42,7 +43,7 @@ export function SignInForm() {
         )}
 
         <div className="space-y-1">
-          <label htmlFor="email">E-mail</label>
+          <Label htmlFor="email">E-mail</Label>
           <Input name="email" id="email" />
           {errors?.email && (
             <p className="text-sm font-medium text-red-500 dark:text-red-400">
@@ -52,7 +53,7 @@ export function SignInForm() {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="password">Password</label>
+          <Label htmlFor="password">Password</Label>
           <Input name="password" type="password" id="password" />
           {errors?.password && (
             <p className="text-sm font-medium text-red-500 dark:text-red-400">

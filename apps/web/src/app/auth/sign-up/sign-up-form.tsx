@@ -10,6 +10,7 @@ import googleIcon from '@/assets/google-icon.svg'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { useFormState } from '@/hooks/use-form-state'
 
@@ -44,7 +45,7 @@ export function SignUpForm() {
         )}
 
         <div className="space-y-1">
-          <label htmlFor="name">Name</label>
+          <Label htmlFor="name">Name</Label>
           <Input name="name" id="name" />
 
           {errors?.name && (
@@ -55,7 +56,7 @@ export function SignUpForm() {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="email">E-mail</label>
+          <Label htmlFor="email">E-mail</Label>
           <Input name="email" type="email" id="email" />
 
           {errors?.email && (
@@ -66,7 +67,7 @@ export function SignUpForm() {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="password">Password</label>
+          <Label htmlFor="password">Password</Label>
           <Input name="password" type="password" id="password" />
 
           {errors?.password && (
@@ -77,7 +78,7 @@ export function SignUpForm() {
         </div>
 
         <div className="space-y-1">
-          <label htmlFor="confirmPassword">Confirm password</label>
+          <Label htmlFor="confirmPassword">Confirm password</Label>
           <Input name="confirmPassword" type="password" id="confirmPassword" />
 
           {errors?.confirmPassword && (
