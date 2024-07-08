@@ -41,7 +41,7 @@ export async function OrganizationSwitcher() {
         ) : (
           <span className="text-muted-foreground">Select organization</span>
         )}
-        <ChevronsUpDown className="ml-auto size-4 text-muted-foreground" />
+        <ChevronsUpDown className="ml-auto size-4 flex-shrink-0 text-muted-foreground" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
