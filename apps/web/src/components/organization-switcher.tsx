@@ -28,7 +28,7 @@ export async function OrganizationSwitcher() {
       <DropdownMenuTrigger className="flex w-[168px] items-center gap-2 rounded p-1 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary">
         {currentOrganization ? (
           <>
-            <Avatar className="mr-2 size-4">
+            <Avatar className="size-4">
               {currentOrganization.avatarUrl && (
                 <AvatarImage src={currentOrganization.avatarUrl}></AvatarImage>
               )}
@@ -41,7 +41,7 @@ export async function OrganizationSwitcher() {
         ) : (
           <span className="text-muted-foreground">Select organization</span>
         )}
-        <ChevronsUpDown className="ml-auto size-4 flex-shrink-0 text-muted-foreground" />
+        <ChevronsUpDown className="ml-auto size-4 shrink-0 text-muted-foreground" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
