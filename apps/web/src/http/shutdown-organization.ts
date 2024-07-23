@@ -4,7 +4,7 @@ type ShutdownOrganizationRequest = {
   org: string
 }
 
-export async function ShutdownOrganization({
+export async function shutdownOrganization({
   org,
 }: ShutdownOrganizationRequest) {
   await api.delete(`organizations/${org}`)

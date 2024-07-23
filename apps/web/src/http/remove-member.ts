@@ -5,6 +5,6 @@ type RemoveMemberRequest = {
   memberId: string
 }
 
-export async function RemoveMember({ org, memberId }: RemoveMemberRequest) {
+export async function removeMember({ org, memberId }: RemoveMemberRequest) {
   await api.delete(`organizations/${org}/members/${memberId}`)
 }

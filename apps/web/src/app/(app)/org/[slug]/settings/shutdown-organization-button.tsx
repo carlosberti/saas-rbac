@@ -14,14 +14,14 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
-import { ShutdownOrganization } from '@/http/shutdown-organization'
+import { shutdownOrganization } from '@/http/shutdown-organization'
 
 export function ShutdownOrganizationButton() {
   const currentOrg = getCurrentOrganization()
   async function shutdownOrganizationAction() {
     'use server'
 
-    await ShutdownOrganization({ org: currentOrg! })
+    await shutdownOrganization({ org: currentOrg! })
 
     redirect('/')
   }
