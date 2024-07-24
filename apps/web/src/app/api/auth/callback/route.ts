@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { type NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
+import { acceptInvite } from '@/http/accept-invite'
 import { signInWithOauth } from '@/http/sign-in-with-oauth'
 
 export async function GET(request: NextRequest) {
@@ -65,6 +66,17 @@ export async function GET(request: NextRequest) {
     path: '/',
     maxAge: 60 * 60 * 24 * 7, // 7 days
   })
+
+  const inviteId = cookies().get('inviteId')?.value
+
+  if (inviteId) {
+    try {
+      await acceptInvite(inviteId)
+    } catch {
+    } finally {
+      cookies().delete('inviteId')
+    }
+  }
 
   const redirectUrl = request.nextUrl.clone()
 

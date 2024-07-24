@@ -59,6 +59,7 @@ export async function getInvite(app: FastifyInstance) {
           organization: {
             select: {
               name: true,
+              slug: true,
             },
           },
         },
