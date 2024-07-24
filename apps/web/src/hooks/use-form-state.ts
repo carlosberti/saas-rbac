@@ -8,7 +8,7 @@ type FormState<T = Record<string, string[]> | null> = {
 
 export function useFormState<T>(
   action: (data: FormData) => Promise<FormState>,
-  onSuccess?: () => Promise<void> | void,
+  onSuccess?: (form: HTMLFormElement) => Promise<void> | void,
   initialState?: FormState<T>,
 ) {
   // const [{ success, message, errors }, formAction, isPending] = useActionState(
@@ -38,7 +38,7 @@ export function useFormState<T>(
       const state = await action(data)
 
       if (state.success && onSuccess) {
-        await onSuccess()
+        await onSuccess(form)
       }
 
       setFormState(state as FormState<T>)
