@@ -14,7 +14,7 @@ export default function OrgLayout({
         <Tabs />
       </div>
 
-      <main className="mx-auto w-full max-w-[1200px]">{children}</main>
+      <main className="mx-auto w-full max-w-[1200px] py-4">{children}</main>
     </div>
   )
 }
