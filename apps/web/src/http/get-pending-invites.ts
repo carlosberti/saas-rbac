@@ -20,9 +20,8 @@ type GetPendingInvitesResponse = {
 }
 
 export async function getPendingInvites() {
-  await new Promise((resolve) => setTimeout(resolve, 2000))
   const result = await api
-    .get(`pending-invites`)
+    .get('pending-invites')
     .json<GetPendingInvitesResponse>()
 
   return result

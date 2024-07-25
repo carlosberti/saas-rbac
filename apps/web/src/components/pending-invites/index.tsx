@@ -13,8 +13,10 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { getPendingInvites } from '@/http/get-pending-invites'
+import { getPendingInvitesCount } from '@/http/get-pending-invites-count'
 import { queryClient } from '@/lib/react-query'
 
+import { Badge } from '../ui/badge'
 import { Skeleton } from '../ui/skeleton'
 import { acceptInviteAction, rejectInviteAction } from './actions'
 
@@ -28,6 +30,12 @@ export function PendingInvites() {
     queryFn: getPendingInvites,
     enabled: isOpen,
   })
+
+  const { data: pendingInvites, isLoading: isLoadingPendingInvitesCount } =
+    useQuery({
+      queryKey: ['pending-invites-count'],
+      queryFn: getPendingInvitesCount,
+    })
 
   async function handleAcceptInvite(inviteId: string) {
     await acceptInviteAction(inviteId)
@@ -48,7 +56,16 @@ export function PendingInvites() {
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
-        <Button size="icon" variant="ghost">
+        <Button size="icon" variant="ghost" className="relative">
+          {!isLoadingPendingInvitesCount &&
+            pendingInvites?.pendingInvitesCount! > 0 && (
+              <Badge
+                className="absolute -right-1 -top-1 rounded-full font-bold"
+                variant="destructive"
+              >
+                {pendingInvites?.pendingInvitesCount}
+              </Badge>
+            )}
           <UserPlus2 className="size-4" />
           <span className="sr-only">Pending invites</span>
         </Button>
