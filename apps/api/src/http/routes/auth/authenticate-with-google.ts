@@ -34,7 +34,6 @@ export async function authenticateWithGoogle(app: FastifyInstance) {
       })
 
       const googleAccessTokenData = await googleAccessTokenResponse.json()
-      console.log(googleAccessTokenData)
 
       const { access_token: googleAccessToken } = z
         .object({

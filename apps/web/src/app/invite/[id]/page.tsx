@@ -47,7 +47,7 @@ export default async function InvitePage({ params }: InvitePageProps) {
     'use server'
 
     await acceptInvite(inviteId)
-
+    cookies().set('org', invite.organization.slug)
     redirect(`/org/${invite.organization.slug}`)
   }
 
