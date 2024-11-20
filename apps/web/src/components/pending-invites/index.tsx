@@ -58,6 +58,7 @@ export function PendingInvites() {
       <PopoverTrigger asChild>
         <Button size="icon" variant="ghost" className="relative">
           {!isLoadingPendingInvitesCount &&
+            // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
             pendingInvites?.pendingInvitesCount! > 0 && (
               <Badge
                 className="absolute -right-1 -top-1 rounded-full font-bold"

@@ -5,7 +5,6 @@ export default function OrgLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-  sheet: React.ReactNode
 }>) {
   return (
     <div>
